@@ -45,11 +45,13 @@
   <table>
     <tr>
       <th style="color: white">Id</th>
-      <th style="color: white; margin-left: 10px">Стоимость заказа</th>
-      <th style="color: white; margin-left: 10px">Список заказа</th>
+      <th style="color: white; margin-left: 10px">Имя работника</th>
+      <th style="color: white; margin-left: 10px">Фамилия работника</th>
+      <th style="color: white; margin-left: 10px">Телефон работника</th>
     </tr>
     <tr style="color: white">
       <td th:text="${order.getId()}"></td>
+      <td th:text="${order.getWName()}"></td>
       <td th:text="${order.getWSurname()}"></td>
       <td th:text="${order.getWTelephone()}"></td>
     </tr>

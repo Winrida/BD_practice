@@ -43,7 +43,7 @@ public class WorkerController {
         return "redirect:/WorkerDB";
     }
     @GetMapping("/WorkerDB/{id}/edit")
-    public String EditZapisController(@PathVariable(value = "id") long id, Model model){
+    public String EditWorkerController(@PathVariable(value = "id") long id, Model model){
         if(!workerRepository.existsById(id)){
             return "redirect:/index";
         }
@@ -55,7 +55,7 @@ public class WorkerController {
     }
 
     @PostMapping("/WorkerDB/{id}/edit")
-    public String ZapisUpdate(@PathVariable(value = "id") long id, @RequestParam String WName, @RequestParam String WSurname, @RequestParam String WTelephone, Model model){
+    public String WorkerUpdate(@PathVariable(value = "id") long id, @RequestParam String WName, @RequestParam String WSurname, @RequestParam String WTelephone, Model model){
         Worker worker = workerRepository.findById(id).orElseThrow();
         worker.setWName(WName);
         worker.setWSurname(WSurname);
