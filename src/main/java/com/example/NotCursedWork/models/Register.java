@@ -10,8 +10,10 @@ public class Register {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Integer Hardware;
-    private boolean PDevices;
+    private String Materials;
+    private String RepairTools;
+    private boolean RepairStatus;
+    private Long OrderId;
 
     public Long getId() {
         return id;
@@ -21,27 +23,45 @@ public class Register {
         this.id = id;
     }
 
-    public Integer getHardware() {
-        return Hardware;
+    public String getMaterials() {
+        return Materials;
     }
 
-    public void setHardware(Integer hardware) {
-        Hardware = hardware;
+    public void setMaterials(String materials) {
+        Materials = materials;
     }
 
-    public boolean isPDevices() {
-        return PDevices;
+    public String getRepairTools() {
+        return RepairTools;
     }
 
-    public void setPDevices(boolean PDevices) {
-        this.PDevices = PDevices;
+    public void setRepairTools(String repairTools) {
+        RepairTools = repairTools;
+    }
+
+    public boolean isRepairStatus() {
+        return RepairStatus;
+    }
+
+    public void setRepairStatus(boolean repairStatus) {
+        RepairStatus = repairStatus;
+    }
+
+    public Long getOrderId() {
+        return OrderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        OrderId = orderId;
     }
 
     public Register() {
     }
 
-    public Register(Integer hardware, boolean PDevices) {
-        Hardware = hardware;
-        this.PDevices = PDevices;
+    public Register(String materials, String repairTools, boolean repairStatus, Long orderId) {
+        Materials = materials;
+        RepairTools = repairTools;
+        RepairStatus = repairStatus;
+        OrderId = orderId;
     }
 }

@@ -1,9 +1,7 @@
 package com.example.NotCursedWork.Controllers;
 
 import com.example.NotCursedWork.models.Client;
-import com.example.NotCursedWork.models.Worker;
 import com.example.NotCursedWork.repository.ClientRepository;
-import com.example.NotCursedWork.repository.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,8 +36,8 @@ public class ClientController {
     }
 
     @PostMapping("/ClientDB/add")
-    public String ClientAController(@RequestParam String CName, @RequestParam String CSurname, @RequestParam String CTelephone, Model model){
-        Client client = new Client(CName, CSurname, CTelephone);
+    public String ClientAController(@RequestParam String CName, @RequestParam String Guitar, @RequestParam String CTelephone, Model model){
+        Client client = new Client(CName, Guitar, CTelephone);
         clientRepository.save(client);
         return "redirect:/ClientDB";
     }
@@ -56,10 +54,10 @@ public class ClientController {
     }
 
     @PostMapping("/ClientDB/{id}/edit")
-    public String ClientUpdate(@PathVariable(value = "id") long id, @RequestParam String CName, @RequestParam String CSurname, @RequestParam String CTelephone, Model model){
+    public String ClientUpdate(@PathVariable(value = "id") long id, @RequestParam String CName, @RequestParam String Guitar, @RequestParam String CTelephone, Model model){
         Client client = clientRepository.findById(id).orElseThrow();
         client.setCName(CName);
-        client.setCSurname(CSurname);
+        client.setGuitar(Guitar);
         client.setCTelephone(CTelephone);
         clientRepository.save(client);
         return "redirect:/ClientDB";

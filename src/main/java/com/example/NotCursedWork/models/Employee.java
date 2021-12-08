@@ -6,11 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Worker {
+public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String WName, WSurname, WTelephone;
+    private String WName, Workplace, WTelephone;
 
     public Long getId() {
         return id;
@@ -28,12 +28,12 @@ public class Worker {
         this.WName = WName;
     }
 
-    public String getWSurname() {
-        return WSurname;
+    public String getWorkplace() {
+        return Workplace;
     }
 
-    public void setWSurname(String WSurname) {
-        this.WSurname = WSurname;
+    public void setWorkplace(String Workplace) {
+        this.Workplace = Workplace;
     }
 
     public String getWTelephone() {
@@ -44,12 +44,12 @@ public class Worker {
         this.WTelephone = WTelephone;
     }
 
-    public Worker() {
+    public Employee() {
     }
 
-    public Worker(String WName, String WSurname, String WTelephone) {
+    public Employee(String WName, String Workplace, String WTelephone) {
         this.WName = WName;
-        this.WSurname = WSurname;
+        this.Workplace = Workplace;
         this.WTelephone = WTelephone;
     }
 }

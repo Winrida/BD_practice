@@ -50,11 +50,10 @@ public class ZapisController {
     }
 
     @PostMapping("/zapis/{id}/edit")
-    public String ZapisUpdate(@PathVariable(value = "id") long id, @RequestParam double Price, @RequestParam String List_of_products, @RequestParam boolean Status, Model model){
+    public String ZapisUpdate(@PathVariable(value = "id") long id, @RequestParam double Price, @RequestParam String Diagnostics, Model model){
         Order1 order1 = orderRepository.findById(id).orElseThrow();
         order1.setPrice(Price);
-        order1.setList_of_products(List_of_products);
-        order1.setStatus(Status);
+        order1.setDiagnostics(Diagnostics);
         orderRepository.save(order1);
         return "redirect:/zapis";
     }
@@ -71,8 +70,8 @@ public class ZapisController {
     }
 
     @PostMapping("/zapis/add")
-    public String ZapishuController(@RequestParam String List_of_products, Model model){
-        Order1 order1 = new Order1(List_of_products);
+    public String ZapishuController(@RequestParam String Diagnostics, Model model){
+        Order1 order1 = new Order1(Diagnostics);
         orderRepository.save(order1);
         return "redirect:/zapis";
     }

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link th:href="@{/css/home.css}" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <title th:text="${title}"></title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link th:href="@{/static.css/home.css}" rel="stylesheet" />
 </head>
@@ -20,23 +21,43 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/index" style="color: white"> Главная страница </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/EmployeeDB/add" style="color: white"> Добавить работника </a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
-<div class="start"></div>
+<div style="margin-top: 6%"></div>
 
-<h1 style="color: white"> Редактирование заказа </h1>
 <div>
-  <form method="post">
-    <div th:each="el : ${order1}" class="container mt-5">
-      <input type="Text" th:value="${el.getPrice()}" name="Price" placeholder="Изменить стоимость" class="form-control">
+  <form action="/EmployeeDB/filter" method="post">
+    <div class="container mt-5">
+      <input type="text" name="id" placeholder="Id работника" class="form-control">
       <div style="padding-top: 5px"></div>
-      <textarea name="Diagnostics" placeholder="Диагностика" class="form-control" th:text="${el.getDiagnostics()}"/>
-      <div style="padding-top: 5px"></div>
-      <div style="padding-left: 46%; margin-top: 10px"> <button type="submit"> Обновить </button> </div>
+      <div style="padding-left: 46%; margin-top: 10px"> <button type="submit"> Отфильтровать </button> </div>
     </div>
     <div style="padding-top: 5px"></div>
+  </form>
+</div>
+<div class="box4" style="margin-left: auto; margin-right: auto" th:each="order :${employees}">
+  <table>
+    <tr>
+      <th style="color: white">Id</th>
+      <th style="color: white; margin-left: 10px">Имя работника</th>
+      <th style="color: white; margin-left: 10px">Рабочее место</th>
+      <th style="color: white; margin-left: 10px">Телефон работника</th>
+    </tr>
+    <tr style="color: white">
+      <td th:text="${order.getId()}"></td>
+      <td th:text="${order.getWName()}"></td>
+      <td th:text="${order.getWorkplace()}"></td>
+      <td th:text="${order.getWTelephone()}"></td>
+    </tr>
+  </table>
+  <a th:href="'/EmployeeDB/' + ${order.getId() + '/edit'}" class="btn btn-warning"> Редактировать </a>
+  <form th:action="'/EmployeeDB/' +  ${order.getId() + '/remove'}" method="post">
+    <button class="btn btn-warning" type="submit"> Удалить </button>
   </form>
 </div>
 

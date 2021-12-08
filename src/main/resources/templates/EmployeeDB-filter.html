@@ -9,10 +9,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link th:href="@{/static.css/home.css}" rel="stylesheet" />
 </head>
-<body style="background-color: #2d4d6f">
-<nav class="navbar navbar-expand-lg" style="background-color: #243f5c">
+<body style="background-color: #D3D3D3">
+<nav class="navbar navbar-expand-lg" style="background-color: #A9A9A9">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" style="color: white">Онлайн аптека</a>
+    <a class="navbar-brand" href="#" style="color: white">Ремонт гитар</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,30 +22,41 @@
           <a class="nav-link active" aria-current="page" href="/index" style="color: white"> Главная страница </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/WorkerDB/add" style="color: white"> Добавить работника </a>
+          <a class="nav-link active" aria-current="page" href="/EmployeeDB/add" style="color: white"> Добавить работника </a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 <div style="margin-top: 6%"></div>
-<div class="box4" style="margin-left: auto; margin-right: auto" th:each="order :${workers}">
+
+<div>
+  <form action="/EmployeeDB/filter" method="post">
+    <div class="container mt-5">
+      <input type="text" name="id" placeholder="Id работника" class="form-control">
+      <div style="padding-top: 5px"></div>
+      <div style="padding-left: 46%; margin-top: 10px"> <button type="submit"> Отфильтровать </button> </div>
+    </div>
+    <div style="padding-top: 5px"></div>
+  </form>
+</div>
+<div class="box4" style="margin-left: auto; margin-right: auto" th:each="order :${emp}">
   <table>
     <tr>
       <th style="color: white">Id</th>
       <th style="color: white; margin-left: 10px">Имя работника</th>
-      <th style="color: white; margin-left: 10px">Фамилия работника</th>
+      <th style="color: white; margin-left: 10px">Рабочее место</th>
       <th style="color: white; margin-left: 10px">Телефон работника</th>
     </tr>
     <tr style="color: white">
       <td th:text="${order.getId()}"></td>
       <td th:text="${order.getWName()}"></td>
-      <td th:text="${order.getWSurname()}"></td>
+      <td th:text="${order.getWorkplace()}"></td>
       <td th:text="${order.getWTelephone()}"></td>
     </tr>
   </table>
-  <a th:href="'/WorkerDB/' + ${order.getId() + '/edit'}" class="btn btn-warning"> Редактировать </a>
-  <form th:action="'/WorkerDB/' +  ${order.getId() + '/remove'}" method="post">
+  <a th:href="'/EmployeeDB/' + ${order.getId() + '/edit'}" class="btn btn-warning"> Редактировать </a>
+  <form th:action="'/EmployeeDB/' +  ${order.getId() + '/remove'}" method="post">
     <button class="btn btn-warning" type="submit"> Удалить </button>
   </form>
 </div>

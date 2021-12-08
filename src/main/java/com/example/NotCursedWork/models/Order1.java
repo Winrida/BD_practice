@@ -8,19 +8,10 @@ public class Order1 {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double Price;
-    private  String List_of_products;
-    private boolean Status;
+    private  String Diagnostics;
 
-    public boolean isStatus() {
-        return Status;
-    }
-
-    public Order1(String list_of_products) {
-        List_of_products = list_of_products;
-    }
-
-    public void setStatus(boolean status) {
-        Status = status;
+    public Order1(String diagnostics) {
+        Diagnostics = diagnostics;
     }
 
     public Long getId() {
@@ -39,21 +30,20 @@ public class Order1 {
         Price = price;
     }
 
-    public String getList_of_products() {
-        return List_of_products;
+    public String getDiagnostics() {
+        return Diagnostics;
     }
 
-    public void setList_of_products(String list_of_products) {
-        List_of_products = list_of_products;
+    public void setDiagnostics(String diagnostics) {
+        Diagnostics = diagnostics;
     }
 
     public Order1() {
     }
 
-    public Order1(Long id, double price, String list_of_products, boolean status) {
+    public Order1(Long id, double price, String diagnostics) {
         this.id = id;
         Price = price;
-        List_of_products = list_of_products;
-        Status = status;
+        Diagnostics = diagnostics;
     }
 }

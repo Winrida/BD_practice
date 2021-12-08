@@ -9,10 +9,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/static.css/home.css}" rel="stylesheet" />
 </head>
-<body style="background-color: #2d4d6f">
-<nav class="navbar navbar-expand-lg" style="background-color: #243f5c">
+<body style="background-color: #D3D3D3">
+<nav class="navbar navbar-expand-lg" style="background-color: #A9A9A9">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#" style="color: white">Онлайн аптека</a>
+        <a class="navbar-brand" href="#" style="color: white">Ремонт гитар</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,7 +22,7 @@
                     <a class="nav-link active" aria-current="page" href="/index" style="color: white"> Главная страница </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/RegisterDB/add" style="color: white"> Добавить устройсво </a>
+                    <a class="nav-link active" aria-current="page" href="/RegisterDB/add" style="color: white"> Добавить заказ</a>
                 </li>
             </ul>
         </div>
@@ -33,13 +33,19 @@
     <table>
         <tr>
             <th style="color: white">Id</th>
-            <th style="color: white; margin-left: 10px">Объём жесткого диска</th>
-            <th style="color: white; margin-left: 10px">Целостность переферийных устройств</th>
+            <th style="color: white; margin-left: 10px">Материалы</th>
+            <th style="color: white; margin-left: 10px">Инструменты</th>
+            <th style="color: white; margin-left: 10px">Статус</th>
+            <th style="color: white; margin-left: 10px">Номер заказа</th>
+
         </tr>
         <tr style="color: white">
             <td th:text="${order.getId()}"></td>
-            <td th:text="${order.getHardware()}"></td>
-            <td th:text="${order.isPDevices()}"></td>
+            <td th:text="${order.getMaterials()}"></td>
+            <td th:text="${order.getRepairTools()}"></td>
+            <td th:text="${order.isRepairStatus()}"></td>
+            <td th:text="${order.getOrderId()}"></td>
+
         </tr>
     </table>
     <a th:href="'/RegisterDB/' + ${order.getId() + '/edit'}" class="btn btn-warning"> Редактировать </a>

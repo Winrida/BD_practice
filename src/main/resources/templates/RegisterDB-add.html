@@ -8,10 +8,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link th:href="@{/static.css/home.css}" rel="stylesheet" />
 </head>
-<body style="background-color: #2d4d6f">
-<nav class="navbar navbar-expand-lg" style="background-color: #243f5c">
+<body style="background-color: #D3D3D3">
+<nav class="navbar navbar-expand-lg" style="background-color: #A9A9A9">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" style="color: white">Цветочный магазин</a>
+    <a class="navbar-brand" href="#" style="color: white">Ремонт гитар</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,14 +29,16 @@
 </nav>
 <div class="start"></div>
 
-<h1 style="color: white"> Добавление устройства </h1>
+<h1 style="color: white"> Добавление ремонта </h1>
 <div>
   <form action="/RegisterDB/add" method="post">
     <div class="container mt-5">
-      <input type="text" name="Hardware" placeholder="Введите объём жесткого диска" class="form-control">
-      <input type="text" name="PDevices" placeholder="Подтвердите работоспособность переферийных устройств" class="form-control">
+      <input type="text" name="Materials" placeholder="Materials" class="form-control">
+      <input type="text" name="RepairTools" placeholder="RepairTools" class="form-control">
+      <input type="text" name="RepairStatus" placeholder="RepairStatus" class="form-control">
+      <input type="text" name="OrderId" placeholder="OrderId" class="form-control">
       <div style="padding-top: 5px"></div>
-      <div style="padding-left: 46%; margin-top: 10px"> <button type="submit"> Добавить работника </button> </div>
+      <div style="padding-left: 46%; margin-top: 10px"> <button type="submit"> Добавить </button> </div>
     </div>
     <div style="padding-top: 5px"></div>
   </form>

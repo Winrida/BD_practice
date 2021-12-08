@@ -1,9 +1,7 @@
 package com.example.NotCursedWork.Controllers;
 
 import com.example.NotCursedWork.models.Register;
-import com.example.NotCursedWork.models.Worker;
 import com.example.NotCursedWork.repository.RegisterRepository;
-import com.example.NotCursedWork.repository.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,8 +36,8 @@ public class RegisterController {
     }
 
     @PostMapping("/RegisterDB/add")
-    public String RegisterAController(@RequestParam Integer Hardware, @RequestParam boolean PDevices, Model model){
-        Register register = new Register(Hardware, PDevices);
+    public String RegisterAController(@RequestParam String Materials, @RequestParam boolean RepairStatus, @RequestParam String RepairTools, @RequestParam Long OrderId, Model model){
+        Register register = new Register(Materials, RepairTools, RepairStatus, OrderId);
         registerRepository.save(register);
         return "redirect:/RegisterDB";
     }
@@ -56,10 +54,13 @@ public class RegisterController {
     }
 
     @PostMapping("/RegisterDB/{id}/edit")
-    public String RegisterUpdate(@PathVariable(value = "id") long id, @RequestParam Integer Hardware, @RequestParam boolean PDevices, Model model){
+    public String RegisterUpdate(@PathVariable(value = "id") long id, @RequestParam String Materials, @RequestParam boolean RepairStatus, @RequestParam String RepairTools, @RequestParam Long OrderId, Model model){
         Register register = registerRepository.findById(id).orElseThrow();
-        register.setHardware(Hardware);
-        register.setPDevices(PDevices);
+        register.setMaterials(Materials);
+        register.setRepairStatus(RepairStatus);
+        register.setRepairTools(RepairTools);
+        register.setOrderId(OrderId);
+
         registerRepository.save(register);
         return "redirect:/RegisterDB";
     }
